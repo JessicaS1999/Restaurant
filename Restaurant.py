@@ -39,8 +39,15 @@ while(response.upper() != "DONE"):
         subtotal += quant*KINGCAKE_SLICE
     elif(int(response) == 3):
         quant = float(input("how many would you like? "))
-        print("Item added: " , quant, "x Crawfish Slice - $" , CRAWFISH_SLICE, )
-        subtotal += quant*CRAWFISH_SLICE
+        if quant >= 8:
+            slices = quant % 8
+            pies = quant // 8 
+            print("Items ordered: ", slices, "x Crawfish Slices - $", CRAWFISH_SLICE)
+            print("Items ordered: " , pies, "x Crawfish Pies - $", CRAWFISH_PIE)
+            subtotal = slices*CRAWFISH_SLICE +(pies*CRAWFISH_PIE)
+        if quant < 8:
+            print("Item added: " , quant, "x Crawfish Slice - $" , CRAWFISH_SLICE, )
+            subtotal += quant*CRAWFISH_SLICE
     elif(int(response) == 4):
         quant = float(input("how many would you like? "))
         print("Item added: " , quant, "x Catfish Poboy - $" , CATFISH,)
